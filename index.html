@@ -21,7 +21,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -167,14 +167,10 @@ body {
 .contact-pill svg { width: 15px; height: 15px; fill: currentColor; }
 
 .summary-box {
-  max-width: 680px;
-  padding: 1.8rem 2rem;
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(240,244,255,0.8);
-  text-align: center;
-  opacity: 0;
-  animation: slideUp 0.8s 0.9s forwards;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: rgba(240,244,255,0.85);
+  margin-bottom: 16px;
 }
 
 .scroll-hint {
@@ -187,8 +183,8 @@ body {
 .scroll-hint svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
 @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-/* ───── PAGE 2: EXPERIENCE ───── */
-#page2 { align-items: flex-start; max-width: 900px; margin: 0 auto; width: 100%; }
+/* ───── PAGE 2–3: EXPERIENCE ───── */
+#page2, #page3 { align-items: flex-start; max-width: 900px; margin: 0 auto; width: 100%; }
 
 .page-header {
   font-family: 'Syne', sans-serif;
@@ -250,8 +246,8 @@ body {
 }
 .job-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--cyan); font-size: 11px; top: 3px; }
 
-/* ───── PAGE 3: PROJECTS ───── */
-#page3 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
+/* ───── PAGE 4: PROJECTS ───── */
+#page4 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
 
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; width: 100%; }
 @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
@@ -279,8 +275,8 @@ body {
 .project-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
 .project-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 14px; }
 
-/* ───── PAGE 4: SKILLS ───── */
-#page4 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
+/* ───── PAGE 5: SKILLS ───── */
+#page5 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
 
 .skills-section { width: 100%; }
 .skill-category { margin-bottom: 1.4rem; }
@@ -306,8 +302,8 @@ body {
 .skill-badge.cloud { background: rgba(244,114,182,0.1); border: 1px solid rgba(244,114,182,0.2); color: #fbcfe8; }
 .skill-badge.ml { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); color: #6ee7b7; }
 
-/* ───── PAGE 5: ACHIEVEMENTS + EDU ───── */
-#page5 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
+/* ───── PAGE 6: ACHIEVEMENTS + EDU ───── */
+#page6 { max-width: 900px; margin: 0 auto; width: 100%; align-items: flex-start; }
 
 .ach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; width: 100%; margin-bottom: 2.5rem; }
 @media (max-width: 640px) { .ach-grid { grid-template-columns: 1fr; } }
@@ -376,10 +372,11 @@ body {
 <!-- NAV DOTS -->
 <div class="nav-dots" id="navDots">
   <button class="nav-dot active" onclick="goTo(0)" title="Intro"></button>
-  <button class="nav-dot" onclick="goTo(1)" title="Experience"></button>
-  <button class="nav-dot" onclick="goTo(2)" title="Projects"></button>
-  <button class="nav-dot" onclick="goTo(3)" title="Skills"></button>
-  <button class="nav-dot" onclick="goTo(4)" title="Achievements"></button>
+  <button class="nav-dot" onclick="goTo(1)" title="Summary"></button>
+  <button class="nav-dot" onclick="goTo(2)" title="Experience"></button>
+  <button class="nav-dot" onclick="goTo(3)" title="Projects"></button>
+  <button class="nav-dot" onclick="goTo(4)" title="Skills"></button>
+  <button class="nav-dot" onclick="goTo(5)" title="Achievements"></button>
 </div>
 
 <!-- ══════════ PAGE 1: INTRO ══════════ -->
@@ -476,7 +473,7 @@ body {
   </div>
 
   <h1 class="intro-name">ISLAUDDIN</h1>
-  <p class="intro-title">Data Engineer &nbsp;·&nbsp; AI Builder &nbsp;·&nbsp; Cloud Architect</p>
+  <p class="intro-title">Data Engineer &nbsp;·&nbsp; GenAI Engineer &nbsp;·&nbsp; Cloud Architect</p>
 
   <div class="contact-row">
     <a class="contact-pill glass" href="mailto:islauddin2001@gmail.com">
@@ -491,15 +488,6 @@ body {
       <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
       GitHub
     </a>
-    <span class="contact-pill glass" style="cursor:default;">
-      <svg viewBox="0 0 20 20" style="fill:currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-      Prayagraj, India
-    </span>
-  </div>
-
-  <div class="summary-box glass swim">
-    Data & AI Engineer with 2 years of experience building data pipelines, microservices, and AI-powered applications.
-    Skilled in LangChain, RAG pipelines, and LLM Orchestration — connecting intelligence with infrastructure.
   </div>
 
   <div class="scroll-hint">
@@ -508,20 +496,91 @@ body {
   </div>
 </section>
 
-<!-- ══════════ PAGE 2: EXPERIENCE ══════════ -->
+<!-- ══════════ PAGE 2: SUMMARY ══════════ -->
 <section class="page" id="page2">
+  <div style="width:100%; max-width:860px;">
+    <h2 class="page-header reveal"><span>Profile</span> Summary</h2>
+
+    <div class="job-card glass reveal swim2">
+      <p class="summary-box">
+        Data Engineer with ~3 years of experience designing, building and troubleshooting production data pipelines.
+        I build ETL/ELT pipelines in Python, SQL, and PySpark that move ERP data from source systems into BigQuery,
+        with automated reporting on top. I deploy on GCP and AWS, exposing data and models through FastAPI microservices,
+        and build GenAI systems with LangChain, LangGraph, and RAG that connect LLMs to APIs and databases to automate
+        workflows — connecting intelligence with infrastructure.
+      </p>
+      <div class="stack-tags" style="margin-bottom:0;">
+        <span class="stack-tag">ETL / ELT</span><span class="stack-tag">Big Data &amp; Spark</span><span class="stack-tag">BigQuery</span><span class="stack-tag">Real-time Sync</span><span class="stack-tag">GCP &amp; AWS</span><span class="stack-tag">FastAPI</span><span class="stack-tag">GenAI &amp; RAG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PAGE 3: EXPERIENCE ══════════ -->
+<section class="page" id="page3">
   <div style="width:100%; max-width:860px;">
     <h2 class="page-header reveal"><span>Work</span> Experience</h2>
 
     <div class="job-card glass reveal swim2">
       <div class="job-top">
         <div>
-          <div class="job-role">Data Engineer</div>
-          <div class="job-company">Bluemeteor · Mumbai, India</div>
+          <div class="job-role">Data Engineer | GenAI Engineer</div>
+          <div class="job-company">Bluemeteor Pvt Ltd · Client Projects</div>
         </div>
-        <div class="job-date">Apr 2023 – Present</div>
+        <div class="job-date">21 May 2024 – Present</div>
       </div>
 
+      <div class="project-chip">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#c4b5fd" stroke-width="1.2"/><circle cx="6" cy="6" r="2" fill="#c4b5fd"/></svg>
+        IBT P21 to BigQuery – Enterprise ELT Pipeline
+      </div>
+      <div class="stack-tags">
+        <span class="stack-tag">Python</span><span class="stack-tag">SQL Server</span><span class="stack-tag">SQLAlchemy</span><span class="stack-tag">BigQuery</span><span class="stack-tag">Stored Procedures</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Engineered a 3-mode ELT pipeline (full, incremental, N-minute refresh) moving ~1B+ records from P21 SQL Server to BigQuery.</li>
+        <li>Built a chunked SQLAlchemy extraction engine with 200K-row batches, retry-with-backoff, and encoding fallbacks.</li>
+        <li>Implemented datetime windows with a 30-minute buffer, enabling near real-time BigQuery sync for live analytics.</li>
+        <li>Developed 9 BigQuery stored procedures for upserts, Sales/PO Cube builds, and schema-diff tracking.</li>
+        <li>Designed a data-quality layer (checksums, COUNT/SUM checks, cube reconciliation) catching drift before BI dashboards.</li>
+      </ul>
+    </div>
+
+    <div class="job-card glass reveal swim3">
+      <div class="project-chip">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#c4b5fd" stroke-width="1.2"/><circle cx="6" cy="6" r="2" fill="#c4b5fd"/></svg>
+        Blue Meteor – Enterprise PIM Catalog Automation Platform
+      </div>
+      <div class="stack-tags">
+        <span class="stack-tag">FastAPI</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">LLMs</span><span class="stack-tag">tiktoken</span><span class="stack-tag">Pydantic</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Built and shipped four production LLM services — attribute mapping, taxonomy node mapping, product classification, and PDF-to-SKU extraction — inside a 55-endpoint FastAPI platform on Kubernetes.</li>
+        <li>Eliminated rate-limit failures on large catalogs by replacing fixed batch sizes with token-aware batching (tiktoken budgeting), TPM-ceiling throttling, and workload-adaptive concurrency scaling to 100 parallel LLM batches.</li>
+        <li>Implemented LLM-as-judge QA agents with confidence-based bypass and reason-code correction passes.</li>
+        <li>Engineered fault-tolerant runs with batch bisection, exception isolation, and partial-success saves.</li>
+        <li>Built a provider-agnostic LLM/vision layer with Pydantic outputs, prompt caching, and cost tracking.</li>
+      </ul>
+    </div>
+
+    <div class="job-card glass reveal swim2">
+      <div class="project-chip">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#c4b5fd" stroke-width="1.2"/><circle cx="6" cy="6" r="2" fill="#c4b5fd"/></svg>
+        IBT Customer Intelligence – AI-Powered Weekly Reporting Pipeline
+      </div>
+      <div class="stack-tags">
+        <span class="stack-tag">BigQuery</span><span class="stack-tag">pandas</span><span class="stack-tag">GPT-4o</span><span class="stack-tag">Plotly</span><span class="stack-tag">PowerPoint</span>
+      </div>
+      <ul class="job-bullets">
+        <li>Automated a weekly reporting pipeline from BigQuery customer data to stakeholder-ready deliverables with zero manual steps.</li>
+        <li>Designed a prompt layer converting customer DataFrames into structured JSON across 15+ analytical dimensions.</li>
+        <li>Integrated GPT-4o to generate slide narratives with actual figures, key movers, and prioritised recommendations.</li>
+        <li>Generated an 18-slide PowerPoint with 10 Plotly charts and a CSV export, emailed automatically to stakeholders.</li>
+        <li>Built a validation layer (zero-row guards, null checks, GP% bounds, credit-risk flags) blocking bad data upstream.</li>
+      </ul>
+    </div>
+
+    <div class="job-card glass reveal swim3">
       <div class="project-chip">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#c4b5fd" stroke-width="1.2"/><circle cx="6" cy="6" r="2" fill="#c4b5fd"/></svg>
         Magic Uploader – AI Document Intelligence
@@ -535,22 +594,11 @@ body {
         <li>Developed a high-performance REST API (FastAPI) supporting async submission, real-time Athena queries, and webhook callbacks for enterprise clients.</li>
       </ul>
     </div>
-
-    <div class="job-card glass reveal swim3">
-      <div class="job-top">
-        <div><div class="job-role">Other Contributions</div><div class="job-company">Bluemeteor · Data Engineering</div></div>
-      </div>
-      <ul class="job-bullets">
-        <li>Built scalable ETL/ELT pipelines on GCP and AWS (PySpark, SQL) with Apache Airflow — 40% efficiency gain, 35% faster execution.</li>
-        <li>Architected a BigQuery data warehouse (star schema) powering BI dashboards across product, operations, and finance teams.</li>
-        <li>Deployed FAISS and Pinecone vector databases for semantic search, cutting manual document processing by 70%.</li>
-      </ul>
-    </div>
   </div>
 </section>
 
-<!-- ══════════ PAGE 3: PROJECTS ══════════ -->
-<section class="page" id="page3">
+<!-- ══════════ PAGE 4: PROJECTS ══════════ -->
+<section class="page" id="page4">
   <div style="width:100%; max-width:860px;">
     <h2 class="page-header reveal"><span>Personal</span> Projects</h2>
     <div class="projects-grid">
@@ -568,17 +616,25 @@ body {
         </ul>
       </div>
 
-      <div class="project-card glass reveal swim2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:280px;border:1px dashed rgba(255,255,255,0.15);">
-        <div style="font-size:36px;margin-bottom:12px;">🚀</div>
-        <div class="project-title" style="color:rgba(255,255,255,0.4);font-size:16px;">More coming soon</div>
-        <p style="font-size:13px;color:rgba(255,255,255,0.25);margin-top:8px;line-height:1.6;">Building more AI projects.<br>Watch this space.</p>
+      <div class="project-card glass reveal swim2">
+        <div class="glow"></div>
+        <div class="stack-tags" style="margin-bottom:10px;">
+          <span class="stack-tag">AWS S3</span><span class="stack-tag">PySpark</span><span class="stack-tag">Athena</span><span class="stack-tag">CloudFormation</span><span class="stack-tag">Tableau</span>
+        </div>
+        <div class="project-title">NYC Parking Violations – Trend Analysis</div>
+        <p class="project-desc">AWS analytics pipeline on NYC parking ticket data, from raw files in S3 to Tableau dashboards.</p>
+        <ul class="job-bullets">
+          <li>Cleaned and analysed data at scale using S3, PySpark, and Athena</li>
+          <li>Automated infrastructure with CloudFormation templates (CFT)</li>
+          <li>Tableau dashboards on timing, location, and vehicle trends</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ PAGE 4: SKILLS ══════════ -->
-<section class="page" id="page4">
+<!-- ══════════ PAGE 5: SKILLS ══════════ -->
+<section class="page" id="page5">
   <div style="width:100%;max-width:860px;">
     <h2 class="page-header reveal"><span>Technical</span> Skills</h2>
     <div class="skills-section">
@@ -587,51 +643,82 @@ body {
         <div class="skill-cat-label">Languages</div>
         <div class="skill-badges">
           <span class="skill-badge lang swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
-          <span class="skill-badge lang swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="">Java</span>
-          <span class="skill-badge lang swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">SQL</span>
+          <span class="skill-badge lang swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">SQL</span>
+          <span class="skill-badge lang swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="">Java</span>
           <span class="skill-badge lang swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="">Bash</span>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <div class="skill-cat-label">AI & GenAI</div>
+        <div class="skill-cat-label">Big Data Ecosystem</div>
         <div class="skill-badges">
-          <span class="skill-badge ai swim">LangChain</span>
-          <span class="skill-badge ai swim2">LangGraph</span>
-          <span class="skill-badge ai swim3">LlamaIndex</span>
-          <span class="skill-badge ai swim">RAG</span>
-          <span class="skill-badge ai swim2">LLM Orchestration</span>
-          <span class="skill-badge ai swim3">ChatGPT API</span>
-        </div>
-      </div>
-
-      <div class="skill-category reveal">
-        <div class="skill-cat-label">Frameworks</div>
-        <div class="skill-badges">
-          <span class="skill-badge fw swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="">FastAPI</span>
-          <span class="skill-badge fw swim2">Apache Airflow</span>
-          <span class="skill-badge fw swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" alt="">Spark</span>
+          <span class="skill-badge fw swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg" alt="">Apache Hadoop</span>
+          <span class="skill-badge fw swim2">HDFS</span>
+          <span class="skill-badge fw swim3">MapReduce</span>
+          <span class="skill-badge fw swim">YARN</span>
+          <span class="skill-badge fw swim2">Apache Hive</span>
+          <span class="skill-badge fw swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" alt="">Apache Spark</span>
           <span class="skill-badge fw swim">PySpark</span>
-          <span class="skill-badge fw swim2">RESTful APIs</span>
-          <span class="skill-badge fw swim3">Microservices</span>
+          <span class="skill-badge fw swim2">Spark SQL</span>
+          <span class="skill-badge fw swim3">Apache Sqoop</span>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <div class="skill-cat-label">Databases</div>
+        <div class="skill-cat-label">Real-time &amp; Streaming</div>
         <div class="skill-badges">
-          <span class="skill-badge db swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="">PostgreSQL</span>
-          <span class="skill-badge db swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">MySQL</span>
-          <span class="skill-badge db swim3">BigQuery</span>
-          <span class="skill-badge db swim">FAISS</span>
-          <span class="skill-badge db swim2">Pinecone</span>
-          <span class="skill-badge db swim3">AWS Athena</span>
-          <span class="skill-badge db swim">Hive</span>
+          <span class="skill-badge ml swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="">Apache Kafka</span>
+          <span class="skill-badge ml swim2">Spark Structured Streaming</span>
+          <span class="skill-badge ml swim3">GCP Pub/Sub</span>
+          <span class="skill-badge ml swim">AWS SQS</span>
+          <span class="skill-badge ml swim2">Change Data Capture (CDC)</span>
+          <span class="skill-badge ml swim3">Near Real-time Sync</span>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <div class="skill-cat-label">Cloud & DevOps</div>
+        <div class="skill-cat-label">Orchestration &amp; ETL</div>
+        <div class="skill-badges">
+          <span class="skill-badge lang swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" alt="">Apache Airflow</span>
+          <span class="skill-badge lang swim2">ETL / ELT Pipelines</span>
+          <span class="skill-badge lang swim3">Full &amp; Incremental Load</span>
+          <span class="skill-badge lang swim">Batch Processing</span>
+          <span class="skill-badge lang swim2">SQLAlchemy</span>
+          <span class="skill-badge lang swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="">pandas</span>
+          <span class="skill-badge lang swim">Stored Procedures</span>
+          <span class="skill-badge lang swim2">Data Quality &amp; Reconciliation</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-label">Data Architecture &amp; Modeling</div>
+        <div class="skill-badges">
+          <span class="skill-badge ai swim">Data Warehousing</span>
+          <span class="skill-badge ai swim2">Data Lake / Lakehouse</span>
+          <span class="skill-badge ai swim3">Medallion (Bronze / Silver / Gold)</span>
+          <span class="skill-badge ai swim">Lambda &amp; Kappa Architecture</span>
+          <span class="skill-badge ai swim2">Star &amp; Snowflake Schema</span>
+          <span class="skill-badge ai swim3">Dimensional Modeling (SCD)</span>
+          <span class="skill-badge ai swim">Partitioning &amp; Clustering</span>
+          <span class="skill-badge ai swim2">OLAP Cubes</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-label">Databases &amp; Warehouses</div>
+        <div class="skill-badges">
+          <span class="skill-badge db swim">BigQuery</span>
+          <span class="skill-badge db swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="">SQL Server</span>
+          <span class="skill-badge db swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="">PostgreSQL</span>
+          <span class="skill-badge db swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">MySQL</span>
+          <span class="skill-badge db swim2">AWS Athena</span>
+          <span class="skill-badge db swim3">FAISS</span>
+          <span class="skill-badge db swim">Pinecone</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-label">Cloud &amp; DevOps</div>
         <div class="skill-badges">
           <span class="skill-badge cloud swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="">GCP</span>
           <span class="skill-badge cloud swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="">AWS</span>
@@ -639,17 +726,41 @@ body {
           <span class="skill-badge cloud swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="">Kubernetes</span>
           <span class="skill-badge cloud swim2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</span>
           <span class="skill-badge cloud swim3">CI/CD</span>
+          <span class="skill-badge cloud swim">GCS</span>
+          <span class="skill-badge cloud swim2">Cloud Run</span>
+          <span class="skill-badge cloud swim3">S3</span>
+          <span class="skill-badge cloud swim">ECR</span>
+          <span class="skill-badge cloud swim2">CloudFormation</span>
         </div>
       </div>
 
       <div class="skill-category reveal">
-        <div class="skill-cat-label">AI / ML</div>
+        <div class="skill-cat-label">APIs &amp; Tools</div>
         <div class="skill-badges">
-          <span class="skill-badge ml swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="">TensorFlow</span>
-          <span class="skill-badge ml swim2">CNN / LSTM</span>
-          <span class="skill-badge ml swim3">Transfer Learning</span>
-          <span class="skill-badge ml swim">Vector Embeddings</span>
-          <span class="skill-badge ml swim2">Data Observability</span>
+          <span class="skill-badge fw swim"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="">FastAPI</span>
+          <span class="skill-badge fw swim2">RESTful APIs</span>
+          <span class="skill-badge fw swim3">Microservices</span>
+          <span class="skill-badge fw swim">Plotly</span>
+          <span class="skill-badge fw swim2">Tableau</span>
+          <span class="skill-badge fw swim3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg" alt="">pytest</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-label">AI &amp; GenAI</div>
+        <div class="skill-badges">
+          <span class="skill-badge ai swim">LangChain</span>
+          <span class="skill-badge ai swim2">LangGraph</span>
+          <span class="skill-badge ai swim3">LlamaIndex</span>
+          <span class="skill-badge ai swim">RAG</span>
+          <span class="skill-badge ai swim2">LLM Orchestration</span>
+          <span class="skill-badge ai swim3">ChatGPT API</span>
+          <span class="skill-badge ai swim">LangSmith</span>
+          <span class="skill-badge ai swim2">Multi-Agent Workflows</span>
+          <span class="skill-badge ai swim3">LLM-as-Judge QA</span>
+          <span class="skill-badge ai swim">Prompt Engineering</span>
+          <span class="skill-badge ai swim2">Structured Outputs</span>
+          <span class="skill-badge ai swim3">Token &amp; Cost Optimization</span>
         </div>
       </div>
 
@@ -657,8 +768,8 @@ body {
   </div>
 </section>
 
-<!-- ══════════ PAGE 5: ACHIEVEMENTS + EDUCATION ══════════ -->
-<section class="page" id="page5">
+<!-- ══════════ PAGE 6: ACHIEVEMENTS + EDUCATION ══════════ -->
+<section class="page" id="page6">
   <div style="width:100%;max-width:860px;">
     <h2 class="page-header reveal"><span>Achievements</span> & Education</h2>
 
@@ -674,6 +785,18 @@ body {
       <div class="ach-card glass reveal swim3">
         <div class="ach-num">70%</div>
         <div class="ach-desc">Reduction in manual document processing via vector DBs</div>
+      </div>
+      <div class="ach-card glass reveal swim2">
+        <div class="ach-num">1B+</div>
+        <div class="ach-desc">Records moved from P21 SQL Server to BigQuery with near real-time sync</div>
+      </div>
+      <div class="ach-card glass reveal swim3">
+        <div class="ach-num">100</div>
+        <div class="ach-desc">Parallel LLM batches with token-aware throttling, zero rate-limit failures</div>
+      </div>
+      <div class="ach-card glass reveal swim">
+        <div class="ach-num">18</div>
+        <div class="ach-desc">Auto-generated weekly report slides, zero manual steps</div>
       </div>
     </div>
 
@@ -696,7 +819,7 @@ body {
     </div>
 
     <div style="text-align:center;margin-top:2.5rem;font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:2px;">
-      ISLAUDDIN · DATA ENGINEER & AI · 2025
+      ISLAUDDIN · DATA ENGINEER & AI · 2026
     </div>
   </div>
 </section>
